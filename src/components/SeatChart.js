@@ -16,13 +16,14 @@ const SeatChart = ({ occasion, tokenMaster, provider, setToggle }) => {
   }
 
   const buyHandler = async (_seat) => {
-    setHasSold(false)
+    setHasSold(false);
 
-    const signer = await provider.getSigner()
-    const transaction = await tokenMaster.connect(signer).mint(occasion.id, _seat, { value: occasion.cost })
-    await transaction.wait()
+    //Buy the seat
+    const signer = await provider.getSigner();
+    const transaction = await tokenMaster.connect(signer).mint(occasion.id, _seat, {value: occasion.cost});
+    await transaction.wait();
 
-    setHasSold(true)
+    setHasSold(true);
   }
 
   useEffect(() => {
